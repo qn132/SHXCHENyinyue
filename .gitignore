@@ -1,0 +1,19 @@
+# 编译产物
+dist/
+build/
+target/
+
+# 依赖文件
+node_modules/  # Node.js 项目
+vendor/        # PHP 项目
+.gradle/       # Gradle 项目
+
+# 日志文件
+*.log
+*.log.*
+
+# 环境配置
+.env
+.idea/         # IntelliJ IDEA 配置
+.vscode/       # VS Code 配置
+.DS_Store      # macOS 文件系统元数据
