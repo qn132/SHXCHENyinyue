@@ -1,38 +1,224 @@
+/* 基础布局 */
 .App {
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.zuo {
+  flex: 1;
+  max-width: 36%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  background: linear-gradient(135deg, #f8fafc 60%, #e0e7ff 100%);
+  border-radius: 0 24px 24px 0;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.06);
+  min-width: 220px;
+  padding-bottom: 2vw;
+  /* 新增：让子区块自适应分布 */
+  justify-content: flex-start;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.zuo-top {
+  position: absolute;
+  left: 50%;
+  top: 4vw;
+  transform: translateX(-50%);
+  width: 18vw;
+  height: 18vw;
+  min-width: 90px;
+  min-height: 90px;
+  max-width: 180px;
+  max-height: 180px;
+  background: radial-gradient(circle at 60% 40%, #fbbf24 60%, #f59e42 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 24px rgba(251,191,36,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2vw;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  z-index: 2;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.zuo-body {
+  flex: 1.2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 0;
+  margin-top: 20vw;
+  min-height: 120px;
+  box-shadow: none;
+  max-height: none;
+}
+
+.player {
+  background: #f4f6fb;
+  border-radius: 1.2vw;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.04);
+  padding: 2vw 3vw 1.5vw 3vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  max-width: 32vw;
+  box-sizing: border-box;
+  border: 1px solid #e5e7eb;
+}
+
+.player-controls1, .player-controls2 {
+  display: flex;
+  gap: 2vw;
+  margin: 1vw 0;
+}
+
+.player-controls1 button, .player-controls2 button {
+  background: #eef2ff;
+  border: none;
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+  min-width: 36px;
+  min-height: 36px;
+  max-width: 56px;
+  max-height: 56px;
+  font-size: 1.2vw;
+  color: #6366f1;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.06);
+}
+
+.player-controls1 button:hover, .player-controls2 button:hover {
+  background: #6366f1;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.play-pause-btn {
+  background: #6366f1;
+  color: #fff;
+  font-size: 1.6vw;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.12);
+}
+
+.play-pause-btn:hover {
+  background: #4f46e5;
+}
+
+.lyrics-btn {
+  font-size: 1vw;
+  font-weight: 500;
+  border-radius: 2vw;
+  padding: 0 1.2vw;
+  width: auto;
+  background: #fef9c3;
+  color: #b45309;
+  box-shadow: 0 2px 8px rgba(251,191,36,0.08);
+}
+
+.lyrics-btn:hover {
+  background: #fde68a;
+  color: #a16207;
+}
+
+.like-btn {
+  background: #fee2e2;
+  color: #ef4444;
+  font-size: 1.1vw;
+  box-shadow: 0 2px 8px rgba(239,68,68,0.08);
+}
+
+.like-btn:hover {
+  background: #fca5a5;
+  color: #fff;
+}
+
+.loop-btn {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.loop-btn:hover {
+  background: #6ee7b7;
+  color: #065f46;
+}
+
+.zuo-bottom {
+  flex: 1;
+  width: 92%;
+  min-height: 80px;
+  margin: 2vw auto 0 auto;
+  background: #f4f6fb;
+  border-radius: 1vw;
+  box-shadow: 0 1px 4px rgba(99,102,241,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1vw 1.5vw;
+  font-size: 1vw;
+  color: #374151;
+  letter-spacing: 1px;
+  overflow-y: auto;
+  max-height: none;
+  border: 1px solid #e5e7eb;
+}
+.zuo-bottom::before {
+  content: '播放列表';
+  display: block;
+  font-size: 0.9vw;
+  color: #6366f1;
+  font-weight: bold;
+  margin-bottom: 0.5vw;
+}
+
+/* 右侧歌词区 */
+.you {
+  flex: 2;
+  max-width: 64%;
+  height: 100%;
+  background: #f9fafb;
+  border-radius: 24px 0 0 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 2vw;
+  color: #6366f1;
+  letter-spacing: 2px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 900px) {
+  .App {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  .zuo, .you {
+    max-width: unset;
+    border-radius: 24px;
+    padding: 0 0 2vw 0;
+  }
+  .zuo-body {
+    min-height: 80px;
+    margin-top: 24vw;
+    padding: 2vw 0;
+  }
+  .zuo-bottom {
+    min-height: 60px;
+    font-size: 0.98rem;
+    padding: 2vw 1vw;
+  }
+  .you {
+    font-size: 1.1rem;
+    padding: 2vw 0;
   }
 }
